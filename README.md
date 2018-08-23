@@ -20,14 +20,12 @@ KAFKA_CONSUMER_BINARY_PATH=/usr/local/etc/confluent/bin
  
 DEBEZIUM_DB_CONNECTOR=mysql
 DEBEZIUM_DB_CONNECTOR_NAME=otrs3-connector
-DEBEZIUM_DB_HOST=informe.cvzmrvhpwyub.sa-east-1.rds.amazonaws.com
+DEBEZIUM_DB_HOST=127.0.0.1
 DEBEZIUM_DB_DATABASE=otrs5
-DEBEZIUM_DB_SERVER_ID=791461872
+DEBEZIUM_DB_SERVER_ID=1
 DEBEZIUM_DB_SERVER_NAME=localdb
-DEBEZIUM_DB_USER=informe_db
-DEBEZIUM_DB_PASSWORD=3AJMekduV65d9ANj
-DEBEZIUM_DB_STREAMING_TABLE=customer_user
-
+DEBEZIUM_DB_USER=root
+DEBEZIUM_DB_PASSWORD=
 ```
 ### Configure Service Provider
 In file config\app.php inside providers put the code:
@@ -91,7 +89,6 @@ class TestService
 
 ### Init Kafka Consumer Work
 ```text
-$ php artisan kafka:listen 
 $ php artisan kafka:listen --topic=topic_name
 ```
 
