@@ -9,6 +9,6 @@
             "email": "michael.dsa41@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {}
 }
