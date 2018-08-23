@@ -1,0 +1,14 @@
+{
+    "name": "michaeldouglas/debezium",
+    "description": "A client library to work with debezium and apache kafka for Database stream",
+    "type": "library",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Michael Douglas",
+            "email": "michael.dsa41@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
