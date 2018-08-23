@@ -1,6 +1,6 @@
 {
     "name": "michaeldouglas/debeziumstream",
-    "description": "A client library to work with debezium and apache kafka for Database stream",
+    "description": "A client library to work with debezium and apache kafka for Database stream.",
     "keywords": ["debezium", "kafka", "consumer", "michael", "douglas"],
     "type": "library",
     "license": "mit",
