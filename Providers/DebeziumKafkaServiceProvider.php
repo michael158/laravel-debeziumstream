@@ -7,6 +7,7 @@ use MichaelDouglas\DebeziumStream\Commands\ConnectDebezium;
 use MichaelDouglas\DebeziumStream\Commands\DeleteKafkaConnection;
 use MichaelDouglas\DebeziumStream\Commands\DetailKafkaConnection;
 use MichaelDouglas\DebeziumStream\Commands\KafkaListen;
+use MichaelDouglas\DebeziumStream\Commands\KafkaListTopics;
 use MichaelDouglas\DebeziumStream\Commands\ShowKafkaConnections;
 
 class DebeziumKafkaServiceProvider extends ServiceProvider
@@ -37,7 +38,8 @@ class DebeziumKafkaServiceProvider extends ServiceProvider
             DeleteKafkaConnection::class,
             DetailKafkaConnection::class,
             ShowKafkaConnections::class,
-            KafkaListen::class
+            KafkaListen::class,
+            KafkaListTopics::class,
         ]);
 
         // REGISTER CONFIGS //

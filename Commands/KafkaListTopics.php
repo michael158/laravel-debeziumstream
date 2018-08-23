@@ -2,34 +2,36 @@
 
 namespace MichaelDouglas\DebeziumStream\Commands;
 
+use App\Customer;
 use Illuminate\Console\Command;
 use MichaelDouglas\DebeziumStream\Services\KAFKA\KafkaService;
 
-class KafkaListen extends Command
+class KafkaListTopics extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'kafka:listen {--topic=}';
+    protected $signature = 'kafka:list-topics';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Init kafka consumer';
+    protected $description = 'List all topics runing in Kafka';
 
+    protected $kafkaService;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(KafkaService $kafkaService)
     {
-
+        $this->kafkaService = $kafkaService;
         parent::__construct();
     }
 
@@ -40,11 +42,9 @@ class KafkaListen extends Command
      */
     public function handle()
     {
-        $this->info('Init kafka consumer work');
+       $topics =  $this->kafkaService->getTopics();
+       $headers = ['topic_name'];
 
-        $topic = $this->option('topic');
-        $service = new KafkaService($topic);
-        $service->consumeTopics();
+       $this->table($headers, $topics);
     }
-
 }

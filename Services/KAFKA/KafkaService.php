@@ -27,7 +27,7 @@ class KafkaService
             : $topic;
     }
 
-    public function run()
+    public function consumeTopics()
     {
         $process = new Process($this->binaryPath. $this->binary .' --bootstrap-server '. $this->kafkaServer .' --property schema.registry.url=http://'. $this->kafkaHost .':8081 --topic ' . $this->topic);
         $process->setTimeout(0);
@@ -41,6 +41,28 @@ class KafkaService
                 echo "\nRead from stderr: " . $message;
             }
         }
+    }
+
+
+    public function getTopics()
+    {
+        $process = new Process($this->binaryPath. 'kafka-topics --list --zookeeper '. $this->kafkaHost .':2181');
+        $process->start();
+        $topics = [];
+
+        $i=0;
+        foreach ($process as $type => $message) {
+            if ($process::OUT === $type) {
+                if($message != "\n"){
+                     $topics[$i]['topic_name'] = trim(preg_replace('/\s+/', ' ', $message));
+                      $i++;
+                }
+            } else { // $process::ERR === $type
+                echo "\nRead from stderr: " . $message;
+            }
+        }
+
+        return $topics;
     }
 
 
