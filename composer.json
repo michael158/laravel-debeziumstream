@@ -1,6 +1,7 @@
 {
     "name": "michaeldouglas/debeziumstream",
     "description": "A client library to work with debezium and apache kafka for Database stream",
+    "keywords": ["debezium", "kafka", "consumer", "michael", "douglas"],
     "type": "library",
     "license": "mit",
     "authors": [
@@ -9,6 +10,14 @@
             "email": "michael.dsa41@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {}
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelDouglas\\DebeziumStream\\" : "src/"
+        }
+    }
 }
