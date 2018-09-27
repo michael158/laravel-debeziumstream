@@ -39,8 +39,6 @@ class KafkaService
         $process = new Process($this->binaryPath . $this->binary . ' --bootstrap-server ' . $this->kafkaServer . ' --property schema.registry.url=http://' . $this->kafkaHost . ':8081 --topic ' . $this->topic);
         $process->setTimeout(0);
 
-        $process->start();
-
         foreach ($process as $type => $message) {
             if ($process::OUT === $type) {
                 $this->kafkaHandlerService->handleMessage($message, $this->topic);
