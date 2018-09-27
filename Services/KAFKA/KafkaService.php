@@ -39,13 +39,14 @@ class KafkaService
         $process = new Process($this->binaryPath . $this->binary . ' --bootstrap-server ' . $this->kafkaServer . ' --property schema.registry.url=http://' . $this->kafkaHost . ':8081 --topic ' . $this->topic);
         $process->setTimeout(0);
 
-        foreach ($process as $type => $message) {
+        $process = new Process(array('ls', '-lsa'));
+        $process->run(function ($type, $message) use($process) {
             if ($process::OUT === $type) {
                 $this->kafkaHandlerService->handleMessage($message, $this->topic);
-            } else { // $process::ERR === $type
-                echo "\nRead from stderr: " . $message;
+            } else {
+                echo 'ERR > '.$message;
             }
-        }
+        });
     }
 
 
